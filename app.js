@@ -10,8 +10,8 @@ var appRoutes = require('./routes/app');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));//this is Accessible  for internet
+app.set('view engine', 'hbs');//like ejs its a templeate
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -22,10 +22,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
-    next();
+    res.setHeader('Access-Control-Allow-Origin', '*');// to all links access
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');//handles req from diff origin
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');//to all curd operations
+    next();//not sending res bt repeating in loop jus to maintain
 });
 
 app.use('/', appRoutes);
